@@ -6,6 +6,12 @@ const app = express();
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  newDate = new Date().toISOString();
+
+  next();
+});
+
 const port = 3000;
 
 const tours = JSON.parse(
@@ -15,6 +21,7 @@ const tours = JSON.parse(
 const getAllTours = (req, res) => {
   res.status(200).json({
     status: 'success',
+    requestedAt: newDate,
     results: tours.length,
     data: {
       tours,
