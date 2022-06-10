@@ -24,7 +24,7 @@ app.get('/api/v1/tours', (req, res) => {
 
 app.get('/api/v1/tours/:id', (req, res) => {
   const tour = tours.at(req.params.id);
-  if (req.params.id >= tours.length) {
+  if (!tour) {
     res.status(404).json({
       status: 'fail',
       message: 'Invalid ID',
@@ -36,6 +36,21 @@ app.get('/api/v1/tours/:id', (req, res) => {
     data: {
       tour,
     },
+  });
+});
+
+app.patch('/api/v1/tours/:id', (req, res) => {
+  const tour = tours.at(req.params.id);
+  if (!tour) {
+    res.status(404).json({
+      status: 'fail',
+      message: 'Invalid ID',
+    });
+    return;
+  }
+  res.status(200).json({
+    status: 'success',
+    data: 'updated type here',
   });
 });
 
