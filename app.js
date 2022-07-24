@@ -16,7 +16,6 @@ app.use(express.static(`${__dirname}/public`));
 
 app.use((req, res, next) => {
   newDate = new Date().toISOString();
-
   next();
 });
 
