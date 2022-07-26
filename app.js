@@ -7,6 +7,7 @@ const userRouter = require('./routes/userRoutes');
 dotenv.config({ path: './config.env' });
 
 const app = express();
+
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
